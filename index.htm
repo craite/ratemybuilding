@@ -3,284 +3,265 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apartment Review Platform</title>
+    <title>BuildingReviews - Yelp for Apartments and Offices</title>
     <style>
+        /* Add CSS styles here for a beautiful design */
         body {
             font-family: Arial, sans-serif;
-            background-color: #F5F5F5;
-            color: #333;
             margin: 0;
-            padding: 20px;
-            line-height: 1.6;
+            padding: 0;
+            background-color: #f0f0f0;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0 100 L20 80 L40 90 L60 70 L80 85 L100 60 L100 100 Z" fill="%23e0e0e0"/></svg>');
+            background-size: cover;
+            background-attachment: fixed;
         }
-
         .container {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
-            background: #FFF;
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-
-        h1, h2 {
-            color: #444;
+        header {
+            background-color: #4a4a4a;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
         }
-
+        h1 {
+            margin: 0;
+        }
+        .search-container {
+            margin: 20px 0;
+            text-align: center;
+        }
+        #search-bar {
+            width: 70%;
+            padding: 10px;
+            font-size: 16px;
+        }
+        #search-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .review-link {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .review-form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
         .form-group {
             margin-bottom: 15px;
         }
-
-        .form-group label {
+        label {
             display: block;
             margin-bottom: 5px;
         }
-
-        .form-group input, .form-group select, .form-group textarea {
+        input[type="text"], input[type="number"], select, textarea {
             width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
+            padding: 8px;
+            border: 1px solid #ddd;
             border-radius: 4px;
-            box-sizing: border-box;
         }
-
-        .btn {
+        textarea {
+            height: 100px;
+        }
+        .rating {
+            display: flex;
+            justify-content: space-between;
+            max-width: 300px;
+        }
+        .rating input[type="radio"] {
+            display: none;
+        }
+        .rating label {
+            cursor: pointer;
+            width: 25px;
+            height: 25px;
+            background-color: #ddd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+        }
+        .rating input[type="radio"]:checked + label {
             background-color: #4CAF50;
             color: white;
-            padding: 10px 15px;
+        }
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
+            font-size: 16px;
         }
-
-        .btn:hover {
-            background-color: #45a049;
+        #reviews {
+            margin-top: 20px;
         }
-
-        .review-list {
-            margin-top: 30px;
-        }
-
-        .review-item {
-            border-bottom: 1px solid #ddd;
-            padding: 15px 0;
-        }
-
-        .review-item:last-child {
-            border-bottom: none;
-        }
-
-        .no-results {
-            text-align: center;
-            color: #888;
-            margin-top: 30px;
+        .review {
+            background-color: white;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
         }
     </style>
 </head>
 <body>
-
-<div class="container">
-    <h1>Apartment Review Platform</h1>
-    <h2>Search for Reviews</h2>
-    <form id="search-form">
-        <div class="form-group">
-            <label for="search-address">Enter Address:</label>
-            <input type="text" id="search-address" name="search-address" placeholder="Enter apartment address" required>
+    <header>
+        <h1>BuildingReviews</h1>
+    </header>
+    <div class="container">
+        <div class="search-container">
+            <input type="text" id="search-bar" placeholder="Search for a building...">
+            <button id="search-button">Search</button>
         </div>
-        <button type="submit" class="btn">Search</button>
-    </form>
-
-    <div id="reviews-section" class="review-list"></div>
-
-    <h2>Leave a Review</h2>
-    <form id="review-form">
-        <div class="form-group">
-            <label for="country">Country:</label>
-            <select id="country" name="country" required>
-                <option value="United States">United States</option>
-            </select>
+        <div class="review-link">
+            <a href="#review-form">Leave a Review</a>
         </div>
-
-        <div class="form-group">
-            <label for="address">Address Line 1:</label>
-            <input type="text" id="address" name="address" placeholder="Address Line 1" required>
+        <div id="reviews"></div>
+        <div class="review-form" id="review-form">
+            <h2>Leave a Review</h2>
+            <form id="building-review-form">
+                <div class="form-group">
+                    <label for="country">Country:</label>
+                    <select id="country" required>
+                        <option value="United States">United States</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="address1">Address Line 1:</label>
+                    <input type="text" id="address1" required>
+                </div>
+                <div class="form-group">
+                    <label for="address2">Address Line 2:</label>
+                    <input type="text" id="address2">
+                </div>
+                <div class="form-group">
+                    <label for="city">City:</label>
+                    <input type="text" id="city" required>
+                </div>
+                <div class="form-group">
+                    <label for="state">State:</label>
+                    <input type="text" id="state" required>
+                </div>
+                <div class="form-group">
+                    <label for="zip">ZIP Code:</label>
+                    <input type="text" id="zip" required>
+                </div>
+                <div class="form-group">
+                    <label>How long have you lived in your building?</label>
+                    <select id="duration" required>
+                        <option value="Less than 1 year">Less than 1 year</option>
+                        <option value="1-2 years">1-2 years</option>
+                        <option value="More than 2 years">More than 2 years</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="rent">How much do you pay in rent?</label>
+                    <input type="number" id="rent" required>
+                </div>
+                <div class="form-group">
+                    <label>Rate your building (1-10):</label>
+                    <div class="rating">
+                        <input type="radio" id="b1" name="building-rating" value="1" required><label for="b1">1</label>
+                        <input type="radio" id="b2" name="building-rating" value="2"><label for="b2">2</label>
+                        <input type="radio" id="b3" name="building-rating" value="3"><label for="b3">3</label>
+                        <input type="radio" id="b4" name="building-rating" value="4"><label for="b4">4</label>
+                        <input type="radio" id="b5" name="building-rating" value="5"><label for="b5">5</label>
+                        <input type="radio" id="b6" name="building-rating" value="6"><label for="b6">6</label>
+                        <input type="radio" id="b7" name="building-rating" value="7"><label for="b7">7</label>
+                        <input type="radio" id="b8" name="building-rating" value="8"><label for="b8">8</label>
+                        <input type="radio" id="b9" name="building-rating" value="9"><label for="b9">9</label>
+                        <input type="radio" id="b10" name="building-rating" value="10"><label for="b10">10</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="love">What do you LOVE about this building?</label>
+                    <textarea id="love" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="hate">What do you HATE about this building?</label>
+                    <textarea id="hate" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="issues">Have you had any issues with this building?</label>
+                    <textarea id="issues" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="wish">What do you wish you knew before moving into this building?</label>
+                    <textarea id="wish" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="landlord">Landlord/Building Name:</label>
+                    <input type="text" id="landlord" required>
+                </div>
+                <div class="form-group">
+                    <label>Rate your landlord (1-10):</label>
+                    <div class="rating">
+                        <input type="radio" id="l1" name="landlord-rating" value="1" required><label for="l1">1</label>
+                        <input type="radio" id="l2" name="landlord-rating" value="2"><label for="l2">2</label>
+                        <input type="radio" id="l3" name="landlord-rating" value="3"><label for="l3">3</label>
+                        <input type="radio" id="l4" name="landlord-rating" value="4"><label for="l4">4</label>
+                        <input type="radio" id="l5" name="landlord-rating" value="5"><label for="l5">5</label>
+                        <input type="radio" id="l6" name="landlord-rating" value="6"><label for="l6">6</label>
+                        <input type="radio" id="l7" name="landlord-rating" value="7"><label for="l7">7</label>
+                        <input type="radio" id="l8" name="landlord-rating" value="8"><label for="l8">8</label>
+                        <input type="radio" id="l9" name="landlord-rating" value="9"><label for="l9">9</label>
+                        <input type="radio" id="l10" name="landlord-rating" value="10"><label for="l10">10</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="explain">Explain your rating in more detail:</label>
+                    <textarea id="explain" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="other">Is there anything else a future tenant should know?</label>
+                    <textarea id="other" required></textarea>
+                </div>
+                <button type="submit">Submit Review</button>
+            </form>
         </div>
+    </div>
 
-        <div class="form-group">
-            <label for="address2">Address Line 2:</label>
-            <input type="text" id="address2" name="address2" placeholder="Address Line 2">
-        </div>
+    <script>
+        // Add JavaScript for functionality
+        document.getElementById('building-review-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Here you would typically send the form data to a server
+            // For this example, we'll just display it in the reviews section
+            const formData = new FormData(e.target);
+            const reviewData = Object.fromEntries(formData.entries());
+            
+            const reviewElement = document.createElement('div');
+            reviewElement.classList.add('review');
+            reviewElement.innerHTML = `
+                <h3>${reviewData.landlord}</h3>
+                <p>Address: ${reviewData.address1}, ${reviewData.city}, ${reviewData.state} ${reviewData.zip}</p>
+                <p>Building Rating: ${reviewData['building-rating']}/10</p>
+                <p>Landlord Rating: ${reviewData['landlord-rating']}/10</p>
+                <p>Love: ${reviewData.love}</p>
+                <p>Hate: ${reviewData.hate}</p>
+            `;
+            
+            document.getElementById('reviews').prepend(reviewElement);
+            e.target.reset();
+        });
 
-        <div class="form-group">
-            <label for="city">City:</label>
-            <input type="text" id="city" name="city" placeholder="City" required>
-        </div>
-
-        <div class="form-group">
-            <label for="state">State:</label>
-            <input type="text" id="state" name="state" placeholder="State" required>
-        </div>
-
-        <div class="form-group">
-            <label for="zip">ZIP Code:</label>
-            <input type="text" id="zip" name="zip" placeholder="ZIP Code" required>
-        </div>
-
-        <div class="form-group">
-            <label for="time-lived">How long have you lived in your building?</label>
-            <select id="time-lived" name="time-lived" required>
-                <option value="Less than 1 year">Less than 1 year</option>
-                <option value="1-2 years">1-2 years</option>
-                <option value="More than 2 years">More than 2 years</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="rent">How much do you pay in rent?</label>
-            <input type="number" id="rent" name="rent" placeholder="Monthly rent" required>
-        </div>
-
-        <div class="form-group">
-            <label for="building-rating">Rate your building (1-10):</label>
-            <select id="building-rating" name="building-rating" required>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="love">What do you LOVE about this building?</label>
-            <textarea id="love" name="love" rows="4" placeholder="Write about what you love..." required></textarea>
-        </div>
-
-        <div class="form-group">
-            <label for="hate">What do you HATE about this building?</label>
-            <textarea id="hate" name="hate" rows="4" placeholder="Write about what you hate..."></textarea>
-        </div>
-
-        <div class="form-group">
-            <label for="issues">Have you had any issues with this building?</label>
-            <textarea id="issues" name="issues" rows="4" placeholder="Write about any issues..."></textarea>
-        </div>
-
-        <div class="form-group">
-            <label for="wish-knew">What do you wish you knew before moving into this building?</label>
-            <textarea id="wish-knew" name="wish-knew" rows="4" placeholder="Write about what you wish you knew..."></textarea>
-        </div>
-
-        <div class="form-group">
-            <label for="landlord-name">Landlord/Building Name:</label>
-            <input type="text" id="landlord-name" name="landlord-name" placeholder="Landlord/Building Name" required>
-        </div>
-
-        <div class="form-group">
-            <label for="landlord-rating">Rate your landlord (1-10):</label>
-            <select id="landlord-rating" name="landlord-rating" required>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="landlord-detail">Explain your rating in more detail:</label>
-            <textarea id="landlord-detail" name="landlord-detail" rows="4" placeholder="Explain your rating..."></textarea>
-        </div>
-
-        <div class="form-group">
-            <label for="additional-info">Is there anything else a future tenant should know?</label>
-            <textarea id="additional-info" name="additional-info" rows="4" placeholder="Additional information..."></textarea>
-        </div>
-
-        <button type="submit" class="btn">Submit Review</button>
-    </form>
-
-    <div id="submitted-reviews-section" class="review-list"></div>
-
-</div>
-
-<script>
-    const reviews = [];
-
-    document.getElementById('search-form').addEventListener('submit', function(event) {
-        event.preventDefault();
-        const searchAddress = document.getElementById('search-address').value.trim();
-        const filteredReviews = reviews.filter(review => review.address.toLowerCase() === searchAddress.toLowerCase());
-        displayReviews(filteredReviews);
-    });
-
-    document.getElementById('review-form').addEventListener('submit', function(event) {
-        event.preventDefault();
-        const review = {
-            country: document.getElementById('country').value,
-            address: document.getElementById('address').value.trim(),
-            address2: document.getElementById('address2').value.trim(),
-            city: document.getElementById('city').value.trim(),
-            state: document.getElementById('state').value.trim(),
-            zip: document.getElementById('zip').value.trim(),
-            timeLived: document.getElementById('time-lived').value,
-            rent: document.getElementById('rent').value,
-            buildingRating: document.getElementById('building-rating').value,
-            love: document.getElementById('love').value.trim(),
-            hate: document.getElementById('hate').value.trim(),
-            issues: document.getElementById('issues').value.trim(),
-            wishKnew: document.getElementById('wish-knew').value.trim(),
-            landlordName: document.getElementById('landlord-name').value.trim(),
-            landlordRating: document.getElementById('landlord-rating').value,
-            landlordDetail: document.getElementById('landlord-detail').value.trim(),
-            additionalInfo: document.getElementById('additional-info').value.trim()
-        };
-        reviews.push(review);
-        displayReviews([review]);
-        document.getElementById('review-form').reset();
-    });
-
-    function displayReviews(reviewsToDisplay) {
-        const reviewsSection = document.getElementById('reviews-section');
-        reviewsSection.innerHTML = '';
-        if (reviewsToDisplay.length === 0) {
-            reviewsSection.innerHTML = '<p class="no-results">No results found.</p>';
-        } else {
-            reviewsToDisplay.forEach(review => {
-                const reviewElement = document.createElement('div');
-                reviewElement.classList.add('review-item');
-                reviewElement.innerHTML = `
-                    <p><strong>Address:</strong> ${review.address}</p>
-                    <p><strong>City:</strong> ${review.city}</p>
-                    <p><strong>State:</strong> ${review.state}</p>
-                    <p><strong>ZIP:</strong> ${review.zip}</p>
-                    <p><strong>Time Lived:</strong> ${review.timeLived}</p>
-                    <p><strong>Rent:</strong> $${review.rent}</p>
-                    <p><strong>Building Rating:</strong> ${review.buildingRating}/10</p>
-                    <p><strong>Love:</strong> ${review.love}</p>
-                    <p><strong>Hate:</strong> ${review.hate}</p>
-                    <p><strong>Issues:</strong> ${review.issues}</p>
-                    <p><strong>Wish Knew:</strong> ${review.wishKnew}</p>
-                    <p><strong>Landlord:</strong> ${review.landlordName}</p>
-                    <p><strong>Landlord Rating:</strong> ${review.landlordRating}/10</p>
-                    <p><strong>Landlord Detail:</strong> ${review.landlordDetail}</p>
-                    <p><strong>Additional Info:</strong> ${review.additionalInfo}</p>
-                `;
-                reviewsSection.appendChild(reviewElement);
-            });
-        }
-    }
-</script>
-
+        document.getElementById('search-button').addEventListener('click', function() {
+            const searchTerm = document.getElementById('search-bar').value;
+            alert(`Searching for: ${searchTerm}`);
+            // Here you would typically send a request to a server to search for buildings
+            // and then display the results
+        });
+    </script>
 </body>
 </html>
