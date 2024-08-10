@@ -208,5 +208,77 @@
                 </div>
                 <div class="form-group">
                     <label for="love">What do you LOVE about this building?</label>
-                   
+                    <textarea id="love" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="improve">What do you wish you could improve about this building?</label>
+                    <textarea id="improve" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="recommend">Would you recommend this building to others?</label>
+                    <select id="recommend" required>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+                <button type="submit">Submit Review</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('building-review-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const country = document.getElementById('country').value;
+            const address1 = document.getElementById('address1').value;
+            const address2 = document.getElementById('address2').value;
+            const city = document.getElementById('city').value;
+            const state = document.getElementById('state').value;
+            const zip = document.getElementById('zip').value;
+            const duration = document.getElementById('duration').value;
+            const rent = document.getElementById('rent').value;
+            const rating = document.querySelector('input[name="building-rating"]:checked').value;
+            const love = document.getElementById('love').value;
+            const improve = document.getElementById('improve').value;
+            const recommend = document.getElementById('recommend').value;
+
+            const reviewHTML = `
+                <div class="review">
+                    <h3>${address1}, ${city}, ${state} ${zip}</h3>
+                    <p><strong>Rating:</strong> ${rating}/10</p>
+                    <p><strong>How long lived:</strong> ${duration}</p>
+                    <p><strong>Rent:</strong> $${rent}/month</p>
+                    <p><strong>What I love:</strong> ${love}</p>
+                    <p><strong>What could be improved:</strong> ${improve}</p>
+                    <p><strong>Would recommend:</strong> ${recommend}</p>
+                </div>
+            `;
+
+            document.getElementById('reviews').insertAdjacentHTML('beforeend', reviewHTML);
+
+            // Clear form
+            document.getElementById('building-review-form').reset();
+        });
+
+        document.getElementById('search-button').addEventListener('click', function() {
+            const query = document.getElementById('search-bar').value.toLowerCase();
+            const reviews = document.querySelectorAll('.review');
+
+            reviews.forEach(review => {
+                const address = review.querySelector('h3').textContent.toLowerCase();
+                if (address.includes(query)) {
+                    review.style.display = '';
+                } else {
+                    review.style.display = 'none';
+                }
+            });
+
+            if (document.querySelectorAll('.review:visible').length === 0) {
+                alert('No results found.');
+            }
+        });
+    </script>
+</body>
+</html>
+
 
