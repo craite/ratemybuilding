@@ -7,7 +7,7 @@
     <title>RateMyBuilding - Honest Reviews of Apartments and Office Buildings</title>
 
     <!-- SEO Meta Tags -->
-    <meta name="description" content="RateMyBuilding offers genuine reviews of apartment buildings and office spaces. Read and leave reviews to find the perfect home or workspace.">
+    <meta name="description" content="RateMyBuilding offers genuine reviews of apartment buildings. Read and leave reviews to find the perfect home">
     <meta name="keywords" content="apartment reviews, building reviews, office space reviews, tenant reviews, real estate reviews">
     <meta name="author" content="RateMyBuilding">
 
@@ -386,6 +386,9 @@
     </footer>
 
     <script>
+// Array to store reviews
+const reviewsArray = [];
+
         // Function to validate and sanitize input
         function sanitizeInput(input) {
             const forbiddenWords = ["fuck", "shit", "bitch"]; // Add curse words here
@@ -394,59 +397,96 @@
         }
 
         // Handle form submission
-        document.getElementById('building-review-form').addEventListener('submit', function (event) {
-            event.preventDefault();
-            
-            const address1 = sanitizeInput(document.getElementById('address1').value);
-            const address2 = sanitizeInput(document.getElementById('address2').value);
-            const city = sanitizeInput(document.getElementById('city').value);
-            const state = sanitizeInput(document.getElementById('state').value);
-            const zip = sanitizeInput(document.getElementById('zip').value);
-            const duration = sanitizeInput(document.getElementById('duration').value);
-            const rent = sanitizeInput(document.getElementById('rent').value);
-            const rating = sanitizeInput(document.querySelector('input[name="rating"]:checked').value);
-            const love = sanitizeInput(document.getElementById('love').value);
-            const hate = sanitizeInput(document.getElementById('hate').value);
-            const issues = sanitizeInput(document.getElementById('issues').value);
-            const wish = sanitizeInput(document.getElementById('wish').value);
-            const landlord = sanitizeInput(document.getElementById('landlord').value);
-            const landlordRating = sanitizeInput(document.querySelector('input[name="landlordRating"]:checked').value);
+document.getElementById('building-review-form').addEventListener('submit', function (event) {
+    event.preventDefault();
+    
+    const address1 = sanitizeInput(document.getElementById('address1').value);
+    const address2 = sanitizeInput(document.getElementById('address2').value);
+    const city = sanitizeInput(document.getElementById('city').value);
+    const state = sanitizeInput(document.getElementById('state').value);
+    const zip = sanitizeInput(document.getElementById('zip').value);
+    const duration = sanitizeInput(document.getElementById('duration').value);
+    const rent = sanitizeInput(document.getElementById('rent').value);
+    const rating = sanitizeInput(document.querySelector('input[name="rating"]:checked').value);
+    const love = sanitizeInput(document.getElementById('love').value);
+    const hate = sanitizeInput(document.getElementById('hate').value);
+    const issues = sanitizeInput(document.getElementById('issues').value);
+    const wish = sanitizeInput(document.getElementById('wish').value);
+    const landlord = sanitizeInput(document.getElementById('landlord').value);
+    const landlordRating = sanitizeInput(document.querySelector('input[name="landlordRating"]:checked').value);
 
-            if (!love || !hate || !rating || !landlord) {
-                alert('Please fill out all required fields.');
-                return;
-            }
+    if (!love || !hate || !rating || !landlord) {
+        alert('Please fill out all required fields.');
+        return;
+    }
 
-            // Display review
-            const reviewSection = document.getElementById('reviews');
-            const reviewElement = document.createElement('div');
-            reviewElement.className = 'review';
-            reviewElement.innerHTML = `
-                <h3>${address1}, ${city}, ${state} ${zip}</h3>
-                <p><strong>Rating:</strong> ${rating}/10</p>
-                <p><strong>Love:</strong> ${love}</p>
-                <p><strong>Hate:</strong> ${hate}</p>
-                <p><strong>Issues:</strong> ${issues}</p>
-                <p><strong>Wish:</strong> ${wish}</p>
-                <p><strong>Landlord/Building Name:</strong> ${landlord}</p>
-                <p><strong>Landlord Rating:</strong> ${landlordRating}/10</p>
-                <p><strong>Rent:</strong> $${rent}</p>
-                <p><strong>Duration:</strong> ${duration}</p>
-            `;
-            reviewSection.appendChild(reviewElement);
+    // Store review in the array
+    reviewsArray.push({
+        address1, address2, city, state, zip, duration, rent, rating, love, hate, issues, wish, landlord, landlordRating
+    });
 
-            // Clear form
-            document.getElementById('building-review-form').reset();
+    // Display review
+    const reviewSection = document.getElementById('reviews');
+    const reviewElement = document.createElement('div');
+    reviewElement.className = 'review';
+    reviewElement.innerHTML = `
+        <h3>${address1}, ${city}, ${state} ${zip}</h3>
+        <p><strong>Rating:</strong> ${rating}/10</p>
+        <p><strong>Love:</strong> ${love}</p>
+        <p><strong>Hate:</strong> ${hate}</p>
+        <p><strong>Issues:</strong> ${issues}</p>
+        <p><strong>Wish:</strong> ${wish}</p>
+        <p><strong>Landlord/Building Name:</strong> ${landlord}</p>
+        <p><strong>Landlord Rating:</strong> ${landlordRating}/10</p>
+        <p><strong>Rent:</strong> $${rent}</p>
+        <p><strong>Duration:</strong> ${duration}</p>
+    `;
+    reviewSection.appendChild(reviewElement);
+
+    // Clear form
+    document.getElementById('building-review-form').reset();
+});
+
+        });
+// Function to handle search
+document.getElementById('search-button').addEventListener('click', function () {
+    const query = sanitizeInput(document.getElementById('search-bar').value).toLowerCase();
+    if (query) {
+        // Clear previous results
+        const reviewSection = document.getElementById('reviews');
+        reviewSection.innerHTML = '';
+
+        // Filter reviews based on query
+        const results = reviewsArray.filter(review => {
+            const fullAddress = `${review.address1} ${review.address2} ${review.city} ${review.state} ${review.zip}`.toLowerCase();
+            return fullAddress.includes(query);
         });
 
-        // Function to handle search
-        document.getElementById('search-button').addEventListener('click', function () {
-            const query = sanitizeInput(document.getElementById('search-bar').value);
-            if (query) {
-                alert('Search functionality is not implemented in this demo.');
-                // Implement redirection to search results page
-            }
-        });
+        // Display search results
+        if (results.length > 0) {
+            results.forEach(review => {
+                const reviewElement = document.createElement('div');
+                reviewElement.className = 'review';
+                reviewElement.innerHTML = `
+                    <h3>${review.address1}, ${review.city}, ${review.state} ${review.zip}</h3>
+                    <p><strong>Rating:</strong> ${review.rating}/10</p>
+                    <p><strong>Love:</strong> ${review.love}</p>
+                    <p><strong>Hate:</strong> ${review.hate}</p>
+                    <p><strong>Issues:</strong> ${review.issues}</p>
+                    <p><strong>Wish:</strong> ${review.wish}</p>
+                    <p><strong>Landlord/Building Name:</strong> ${review.landlord}</p>
+                    <p><strong>Landlord Rating:</strong> ${review.landlordRating}/10</p>
+                    <p><strong>Rent:</strong> $${review.rent}</p>
+                    <p><strong>Duration:</strong> ${review.duration}</p>
+                `;
+                reviewSection.appendChild(reviewElement);
+            });
+        } else {
+            reviewSection.innerHTML = '<p>No results found.</p>';
+        }
+    }
+});
+
     </script>
 </body>
 
