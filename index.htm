@@ -5,13 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BuildingReviews - Yelp for Apartments and Offices</title>
     <style>
-        /* Add CSS styles here for a beautiful design */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f0f0f0;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0 100 L20 80 L40 90 L60 70 L80 85 L100 60 L100 100 Z" fill="%23e0e0e0"/></svg>');
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0 100 L20 80 L40 90 L60 70 L80 85 L100 60 L100 100 Z" fill="%23e0e0e0"/><rect x="5" y="50" width="90" height="45" fill="%23cccccc"/><rect x="15" y="65" width="70" height="30" fill="%23b3b3b3"/><rect x="25" y="80" width="50" height="15" fill="%23999999"/></svg>');
             background-size: cover;
             background-attachment: fixed;
         }
@@ -21,97 +20,120 @@
             padding: 20px;
         }
         header {
-            background-color: #4a4a4a;
+            background-color: #2c3e50;
             color: white;
             text-align: center;
             padding: 20px 0;
         }
         h1 {
             margin: 0;
+            font-size: 2.5em;
         }
         .search-container {
-            margin: 20px 0;
+            margin: 40px 0;
             text-align: center;
         }
         #search-bar {
-            width: 70%;
-            padding: 10px;
-            font-size: 16px;
+            width: 60%;
+            padding: 15px;
+            font-size: 18px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
         }
         #search-button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #4CAF50;
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #27ae60;
             color: white;
             border: none;
+            border-radius: 5px;
             cursor: pointer;
+            margin-left: 10px;
+        }
+        #search-button:hover {
+            background-color: #2ecc71;
         }
         .review-link {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 40px;
+        }
+        .review-link a {
+            text-decoration: none;
+            color: #2980b9;
+            font-size: 18px;
         }
         .review-form {
             background-color: white;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
         }
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
         label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            font-weight: bold;
         }
         input[type="text"], input[type="number"], select, textarea {
             width: 100%;
-            padding: 8px;
+            padding: 10px;
             border: 1px solid #ddd;
-            border-radius: 4px;
+            border-radius: 5px;
+            font-size: 16px;
         }
         textarea {
-            height: 100px;
+            height: 120px;
         }
         .rating {
             display: flex;
             justify-content: space-between;
-            max-width: 300px;
+            max-width: 350px;
         }
         .rating input[type="radio"] {
             display: none;
         }
         .rating label {
             cursor: pointer;
-            width: 25px;
-            height: 25px;
+            width: 30px;
+            height: 30px;
             background-color: #ddd;
             display: flex;
             justify-content: center;
             align-items: center;
             border-radius: 50%;
+            font-size: 16px;
         }
         .rating input[type="radio"]:checked + label {
-            background-color: #4CAF50;
+            background-color: #27ae60;
             color: white;
         }
         button[type="submit"] {
-            background-color: #4CAF50;
+            background-color: #27ae60;
             color: white;
-            padding: 10px 20px;
+            padding: 12px 25px;
             border: none;
-            border-radius: 4px;
+            border-radius: 5px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 18px;
+        }
+        button[type="submit"]:hover {
+            background-color: #2ecc71;
         }
         #reviews {
-            margin-top: 20px;
+            margin-top: 40px;
         }
         .review {
             background-color: white;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 5px;
-            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .review h3 {
+            margin-top: 0;
         }
     </style>
 </head>
@@ -186,82 +208,5 @@
                 </div>
                 <div class="form-group">
                     <label for="love">What do you LOVE about this building?</label>
-                    <textarea id="love" required></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="hate">What do you HATE about this building?</label>
-                    <textarea id="hate" required></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="issues">Have you had any issues with this building?</label>
-                    <textarea id="issues" required></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="wish">What do you wish you knew before moving into this building?</label>
-                    <textarea id="wish" required></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="landlord">Landlord/Building Name:</label>
-                    <input type="text" id="landlord" required>
-                </div>
-                <div class="form-group">
-                    <label>Rate your landlord (1-10):</label>
-                    <div class="rating">
-                        <input type="radio" id="l1" name="landlord-rating" value="1" required><label for="l1">1</label>
-                        <input type="radio" id="l2" name="landlord-rating" value="2"><label for="l2">2</label>
-                        <input type="radio" id="l3" name="landlord-rating" value="3"><label for="l3">3</label>
-                        <input type="radio" id="l4" name="landlord-rating" value="4"><label for="l4">4</label>
-                        <input type="radio" id="l5" name="landlord-rating" value="5"><label for="l5">5</label>
-                        <input type="radio" id="l6" name="landlord-rating" value="6"><label for="l6">6</label>
-                        <input type="radio" id="l7" name="landlord-rating" value="7"><label for="l7">7</label>
-                        <input type="radio" id="l8" name="landlord-rating" value="8"><label for="l8">8</label>
-                        <input type="radio" id="l9" name="landlord-rating" value="9"><label for="l9">9</label>
-                        <input type="radio" id="l10" name="landlord-rating" value="10"><label for="l10">10</label>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="explain">Explain your rating in more detail:</label>
-                    <textarea id="explain" required></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="other">Is there anything else a future tenant should know?</label>
-                    <textarea id="other" required></textarea>
-                </div>
-                <button type="submit">Submit Review</button>
-            </form>
-        </div>
-    </div>
+                   
 
-    <script>
-        // Add JavaScript for functionality
-        document.getElementById('building-review-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            // Here you would typically send the form data to a server
-            // For this example, we'll just display it in the reviews section
-            const formData = new FormData(e.target);
-            const reviewData = Object.fromEntries(formData.entries());
-            
-            const reviewElement = document.createElement('div');
-            reviewElement.classList.add('review');
-            reviewElement.innerHTML = `
-                <h3>${reviewData.landlord}</h3>
-                <p>Address: ${reviewData.address1}, ${reviewData.city}, ${reviewData.state} ${reviewData.zip}</p>
-                <p>Building Rating: ${reviewData['building-rating']}/10</p>
-                <p>Landlord Rating: ${reviewData['landlord-rating']}/10</p>
-                <p>Love: ${reviewData.love}</p>
-                <p>Hate: ${reviewData.hate}</p>
-            `;
-            
-            document.getElementById('reviews').prepend(reviewElement);
-            e.target.reset();
-        });
-
-        document.getElementById('search-button').addEventListener('click', function() {
-            const searchTerm = document.getElementById('search-bar').value;
-            alert(`Searching for: ${searchTerm}`);
-            // Here you would typically send a request to a server to search for buildings
-            // and then display the results
-        });
-    </script>
-</body>
-</html>
