@@ -10,12 +10,6 @@
     <meta name="description" content="RateMyBuilding offers genuine reviews of apartment buildings and office spaces. Read and leave reviews to find the perfect home or workspace.">
     <meta name="keywords" content="apartment reviews, building reviews, office space reviews, tenant reviews, real estate reviews">
     <meta name="author" content="RateMyBuilding">
-    <meta property="og:title" content="RateMyBuilding - Honest Reviews of Apartments and Office Buildings">
-    <meta property="og:description" content="RateMyBuilding offers genuine reviews of apartment buildings and office spaces. Read and leave reviews to find the perfect home or workspace.">
-    <meta property="og:image" content="URL_TO_IMAGE">
-    <meta property="og:url" content="URL_TO_YOUR_WEBSITE">
-    <meta property="og:type" content="website">
-    <meta name="robots" content="index, follow">
 
     <!-- Lato Font Import -->
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
@@ -33,7 +27,7 @@
         }
 
         header {
-            background-color: #7F9A65; /* Earthy green */
+            background-color: #4a4a4a;
             color: white;
             padding: 20px;
             text-align: center;
@@ -52,7 +46,7 @@
         }
 
         nav {
-            background-color: #5C6D4D; /* Darker earthy green */
+            background-color: #333;
             padding: 10px;
             text-align: center;
         }
@@ -86,21 +80,21 @@
 
         .search-container {
             text-align: center;
-            margin-top: 40px; /* 2 inches approx. 40px */
+            margin-bottom: 40px;
         }
 
         #search-bar {
             width: 70%;
             padding: 10px;
             font-size: 18px;
-            border: 1px solid #a89f91; /* Earthy beige */
+            border: 1px solid #ccc;
             border-radius: 5px;
         }
 
         #search-button {
             padding: 10px 20px;
             font-size: 18px;
-            background-color: #a89f91; /* Earthy beige */
+            background-color: #4CAF50;
             color: white;
             border: none;
             border-radius: 5px;
@@ -114,7 +108,7 @@
         }
 
         .review-link a {
-            color: #7F9A65; /* Earthy green */
+            color: #4CAF50;
             font-weight: bold;
             text-decoration: none;
         }
@@ -146,7 +140,7 @@
         textarea {
             width: 100%;
             padding: 10px;
-            border: 1px solid #a89f91; /* Earthy beige */
+            border: 1px solid #ccc;
             border-radius: 5px;
             font-size: 16px;
         }
@@ -177,12 +171,12 @@
         }
 
         .rating input[type="radio"]:checked+label {
-            background-color: #7F9A65; /* Earthy green */
+            background-color: #4CAF50;
             color: white;
         }
 
         button[type="submit"] {
-            background-color: #7F9A65; /* Earthy green */
+            background-color: #4CAF50;
             color: white;
             padding: 10px 20px;
             border: none;
@@ -215,7 +209,7 @@
         }
 
         footer {
-            background-color: #5C6D4D; /* Darker earthy green */
+            background-color: #333;
             color: white;
             text-align: center;
             padding: 20px 0;
@@ -240,20 +234,21 @@
         <a href="#reviews">Reviews</a>
     </nav>
 
-    <div class="search-container">
-        <input type="text" id="search-bar" placeholder="Search for a building...">
-        <button id="search-button">Search</button>
-    </div>
+        </div>
 
-    <div class="review-link">
-        <a href="#review-form">Leave a Review</a>
-    </div>
 
-    <div id="reviews">
-        <!-- Reviews will be displayed here -->
-    </div>
+        <div class="search-container">
+            <input type="text" id="search-bar" placeholder="Search for a building...">
+            <button id="search-button">Search</button>
+        </div>
 
-    <div class="container" id="home">
+        <div class="review-link">
+            <a href="#review-form">Leave a Review</a>
+        </div>
+
+        <div id="reviews">
+            <!-- Reviews will be displayed here -->
+   <div class="container" id="home">
         <div class="intro">
             <h2>Welcome to RateMyBuilding</h2>
             <p>Welcome to RateMyBuilding, your trusted source for genuine insights on apartments and office buildings.
@@ -262,68 +257,197 @@
                 into our community's wealth of knowledge. From hidden gems to potential pitfalls, RateMyBuilding offers
                 you valuable, user-generated information to guide your choice. Make your next move with confidence,
                 armed with real perspectives from real tenants.</p>
-        </div>
+    </div>
 
-        <div class="container review-form" id="review-form">
-            <h2>Leave a Review</h2>
-            <form id="building-review-form">
-                <div class="form-group">
-                    <label for="country">Country:</label>
-                    <select id="country" required>
-                        <option value="United States">United States</option>
-                    </select>
+    <div class="container review-form" id="review-form">
+        <h2>Leave a Review</h2>
+        <form id="building-review-form">
+            <div class="form-group">
+                <label for="country">Country:</label>
+                <select id="country" required>
+                    <option value="United States">United States</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="address1">Address Line 1:</label>
+                <input type="text" id="address1" required>
+            </div>
+            <div class="form-group">
+                <label for="address2">Address Line 2:</label>
+                <input type="text" id="address2">
+            </div>
+            <div class="form-group">
+                <label for="city">City:</label>
+                <input type="text" id="city" required>
+            </div>
+            <div class="form-group">
+                <label for="state">State:</label>
+                <input type="text" id="state" required>
+            </div>
+            <div class="form-group">
+                <label for="zip">ZIP Code:</label>
+                <input type="text" id="zip" required>
+            </div>
+            <div class="form-group">
+                <label>How long have you lived in your building?</label>
+                <select id="duration" required>
+                    <option value="Less than 1 year">Less than 1 year</option>
+                    <option value="1-2 years">1-2 years</option>
+                    <option value="More than 2 years">More than 2 years</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="rent">How much do you pay in rent?</label>
+                <input type="number" id="rent" required>
+            </div>
+            <div class="form-group">
+                <label>Rate your building (1-10):</label>
+                <div class="rating">
+                    <input type="radio" id="rate1" name="rating" value="1" required>
+                    <label for="rate1">1</label>
+                    <input type="radio" id="rate2" name="rating" value="2">
+                    <label for="rate2">2</label>
+                    <input type="radio" id="rate3" name="rating" value="3">
+                    <label for="rate3">3</label>
+                    <input type="radio" id="rate4" name="rating" value="4">
+                    <label for="rate4">4</label>
+                    <input type="radio" id="rate5" name="rating" value="5">
+                    <label for="rate5">5</label>
+                    <input type="radio" id="rate6" name="rating" value="6">
+                    <label for="rate6">6</label>
+                    <input type="radio" id="rate7" name="rating" value="7">
+                    <label for="rate7">7</label>
+                    <input type="radio" id="rate8" name="rating" value="8">
+                    <label for="rate8">8</label>
+                    <input type="radio" id="rate9" name="rating" value="9">
+                    <label for="rate9">9</label>
+                    <input type="radio" id="rate10" name="rating" value="10">
+                    <label for="rate10">10</label>
                 </div>
-                <div class="form-group">
-                    <label for="address1">Address Line 1:</label>
-                    <input type="text" id="address1" required>
+            </div>
+            <div class="form-group">
+                <label for="love">What do you LOVE about this building?</label>
+                <textarea id="love" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="hate">What do you HATE about this building?</label>
+                <textarea id="hate" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="issues">Have you had any issues with this building?</label>
+                <textarea id="issues"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="wish">What do you wish you knew before moving into this building?</label>
+                <textarea id="wish"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="landlord">Landlord/Building Name:</label>
+                <input type="text" id="landlord" required>
+            </div>
+            <div class="form-group">
+                <label>Rate your landlord (1-10):</label>
+                <div class="rating">
+                    <input type="radio" id="landlordRate1" name="landlordRating" value="1" required>
+                    <label for="landlordRate1">1</label>
+                    <input type="radio" id="landlordRate2" name="landlordRating" value="2">
+                    <label for="landlordRate2">2</label>
+                    <input type="radio" id="landlordRate3" name="landlordRating" value="3">
+                    <label for="landlordRate3">3</label>
+                    <input type="radio" id="landlordRate4" name="landlordRating" value="4">
+                    <label for="landlordRate4">4</label>
+                    <input type="radio" id="landlordRate5" name="landlordRating" value="5">
+                    <label for="landlordRate5">5</label>
+                    <input type="radio" id="landlordRate6" name="landlordRating" value="6">
+                    <label for="landlordRate6">6</label>
+                    <input type="radio" id="landlordRate7" name="landlordRating" value="7">
+                    <label for="landlordRate7">7</label>
+                    <input type="radio" id="landlordRate8" name="landlordRating" value="8">
+                    <label for="landlordRate8">8</label>
+                    <input type="radio" id="landlordRate9" name="landlordRating" value="9">
+                    <label for="landlordRate9">9</label>
+                    <input type="radio" id="landlordRate10" name="landlordRating" value="10">
+                    <label for="landlordRate10">10</label>
                 </div>
-                <div class="form-group">
-                    <label for="address2">Address Line 2:</label>
-                    <input type="text" id="address2">
-                </div>
-                <div class="form-group">
-                    <label for="city">City:</label>
-                    <input type="text" id="city" required>
-                </div>
-                <div class="form-group">
-                    <label for="state">State:</label>
-                    <input type="text" id="state" required>
-                </div>
-                <div class="form-group">
-                    <label for="zip">ZIP Code:</label>
-                    <input type="text" id="zip" required>
-                </div>
-                <div class="form-group">
-                    <label for="rating">Rating:</label>
-                    <div class="rating">
-                        <input type="radio" id="rating1" name="rating" value="1">
-                        <label for="rating1">1</label>
-                        <input type="radio" id="rating2" name="rating" value="2">
-                        <label for="rating2">2</label>
-                        <input type="radio" id="rating3" name="rating" value="3">
-                        <label for="rating3">3</label>
-                        <input type="radio" id="rating4" name="rating" value="4">
-                        <label for="rating4">4</label>
-                        <input type="radio" id="rating5" name="rating" value="5">
-                        <label for="rating5">5</label>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="length">Length of Residency (months):</label>
-                    <input type="number" id="length" required>
-                </div>
-                <div class="form-group">
-                    <label for="review-text">Review:</label>
-                    <textarea id="review-text" required></textarea>
-                </div>
-                <button type="submit">Submit Review</button>
-            </form>
-        </div>
+<div class="form-group">
+                <label for="Explain">Please explain the rating you gave your Landloard in more detail</label>
+                <textarea id="Explain"></textarea>
+
+            </div>
+<div class="form-group">
+                <label for="Anything Else?">Is there anything else you think a future tenant should know before moving in?</label>
+                <textarea id="Anything Else?"></textarea>
+            <button type="submit">Submit Review</button>
+        </form>
     </div>
 
     <footer>
         <p>&copy; 2024 RateMyBuilding. All rights reserved.</p>
     </footer>
+
+    <script>
+        // Function to validate and sanitize input
+        function sanitizeInput(input) {
+            const forbiddenWords = ["fuck", "shit", "bitch"]; // Add curse words here
+            const sanitizedInput = input.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            return forbiddenWords.some(word => sanitizedInput.includes(word)) ? "" : sanitizedInput;
+        }
+
+        // Handle form submission
+        document.getElementById('building-review-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            
+            const address1 = sanitizeInput(document.getElementById('address1').value);
+            const address2 = sanitizeInput(document.getElementById('address2').value);
+            const city = sanitizeInput(document.getElementById('city').value);
+            const state = sanitizeInput(document.getElementById('state').value);
+            const zip = sanitizeInput(document.getElementById('zip').value);
+            const duration = sanitizeInput(document.getElementById('duration').value);
+            const rent = sanitizeInput(document.getElementById('rent').value);
+            const rating = sanitizeInput(document.querySelector('input[name="rating"]:checked').value);
+            const love = sanitizeInput(document.getElementById('love').value);
+            const hate = sanitizeInput(document.getElementById('hate').value);
+            const issues = sanitizeInput(document.getElementById('issues').value);
+            const wish = sanitizeInput(document.getElementById('wish').value);
+            const landlord = sanitizeInput(document.getElementById('landlord').value);
+            const landlordRating = sanitizeInput(document.querySelector('input[name="landlordRating"]:checked').value);
+
+            if (!love || !hate || !rating || !landlord) {
+                alert('Please fill out all required fields.');
+                return;
+            }
+
+            // Display review
+            const reviewSection = document.getElementById('reviews');
+            const reviewElement = document.createElement('div');
+            reviewElement.className = 'review';
+            reviewElement.innerHTML = `
+                <h3>${address1}, ${city}, ${state} ${zip}</h3>
+                <p><strong>Rating:</strong> ${rating}/10</p>
+                <p><strong>Love:</strong> ${love}</p>
+                <p><strong>Hate:</strong> ${hate}</p>
+                <p><strong>Issues:</strong> ${issues}</p>
+                <p><strong>Wish:</strong> ${wish}</p>
+                <p><strong>Landlord/Building Name:</strong> ${landlord}</p>
+                <p><strong>Landlord Rating:</strong> ${landlordRating}/10</p>
+                <p><strong>Rent:</strong> $${rent}</p>
+                <p><strong>Duration:</strong> ${duration}</p>
+            `;
+            reviewSection.appendChild(reviewElement);
+
+            // Clear form
+            document.getElementById('building-review-form').reset();
+        });
+
+        // Function to handle search
+        document.getElementById('search-button').addEventListener('click', function () {
+            const query = sanitizeInput(document.getElementById('search-bar').value);
+            if (query) {
+                alert('Search functionality is not implemented in this demo.');
+                // Implement redirection to search results page
+            }
+        });
+    </script>
 </body>
 
 </html>
