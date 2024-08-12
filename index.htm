@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -80,11 +81,11 @@
 
         .search-container {
             text-align: center;
-            margin: 100px 0;
+            margin-bottom: 40px;
         }
 
         #search-bar {
-            width: 50%;
+            width: 70%;
             padding: 10px;
             font-size: 18px;
             border: 1px solid #ccc;
@@ -234,7 +235,21 @@
         <a href="#reviews">Reviews</a>
     </nav>
 
-    <div id="home" class="container">
+        </div>
+
+
+        <div class="search-container">
+            <input type="text" id="search-bar" placeholder="Search for a building...">
+            <button id="search-button">Search</button>
+        </div>
+
+        <div class="review-link">
+            <a href="#review-form">Leave a Review</a>
+        </div>
+
+        <div id="reviews">
+            <!-- Reviews will be displayed here -->
+   <div class="container" id="home">
         <div class="intro">
             <h2>Welcome to RateMyBuilding</h2>
             <p>Welcome to RateMyBuilding, your trusted source for genuine insights on apartments and office buildings.
@@ -243,12 +258,6 @@
                 into our community's wealth of knowledge. From hidden gems to potential pitfalls, RateMyBuilding offers
                 you valuable, user-generated information to guide your choice. Make your next move with confidence,
                 armed with real perspectives from real tenants.</p>
-        </div>
-
-        <div class="search-container">
-            <input type="text" id="search-bar" placeholder="Search for a building...">
-            <button id="search-button">Search</button>
-        </div>
     </div>
 
     <div class="container review-form" id="review-form">
@@ -285,63 +294,92 @@
                 <select id="duration" required>
                     <option value="Less than 1 year">Less than 1 year</option>
                     <option value="1-2 years">1-2 years</option>
-                    <option value="More than 2 years">More than 2 years</
                     <option value="More than 2 years">More than 2 years</option>
                 </select>
             </div>
             <div class="form-group">
-                <label for="review">Your Review:</label>
-                <textarea id="review" required></textarea>
+                <label for="rent">How much do you pay in rent?</label>
+                <input type="number" id="rent" required>
             </div>
             <div class="form-group">
-                <label for="rating">Rating:</label>
-                <div class="rating" id="rating">
-                    <input type="radio" id="star5" name="rating" value="5" required>
-                    <label for="star5">5</label>
-                    <input type="radio" id="star4" name="rating" value="4">
-                    <label for="star4">4</label>
-                    <input type="radio" id="star3" name="rating" value="3">
-                    <label for="star3">3</label>
-                    <input type="radio" id="star2" name="rating" value="2">
-                    <label for="star2">2</label>
-                    <input type="radio" id="star1" name="rating" value="1">
-                    <label for="star1">1</label>
+                <label>Rate your building (1-10):</label>
+                <div class="rating">
+                    <input type="radio" id="rate1" name="rating" value="1" required>
+                    <label for="rate1">1</label>
+                    <input type="radio" id="rate2" name="rating" value="2">
+                    <label for="rate2">2</label>
+                    <input type="radio" id="rate3" name="rating" value="3">
+                    <label for="rate3">3</label>
+                    <input type="radio" id="rate4" name="rating" value="4">
+                    <label for="rate4">4</label>
+                    <input type="radio" id="rate5" name="rating" value="5">
+                    <label for="rate5">5</label>
+                    <input type="radio" id="rate6" name="rating" value="6">
+                    <label for="rate6">6</label>
+                    <input type="radio" id="rate7" name="rating" value="7">
+                    <label for="rate7">7</label>
+                    <input type="radio" id="rate8" name="rating" value="8">
+                    <label for="rate8">8</label>
+                    <input type="radio" id="rate9" name="rating" value="9">
+                    <label for="rate9">9</label>
+                    <input type="radio" id="rate10" name="rating" value="10">
+                    <label for="rate10">10</label>
                 </div>
             </div>
+            <div class="form-group">
+                <label for="love">What do you LOVE about this building?</label>
+                <textarea id="love" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="hate">What do you HATE about this building?</label>
+                <textarea id="hate" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="issues">Have you had any issues with this building?</label>
+                <textarea id="issues"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="wish">What do you wish you knew before moving into this building?</label>
+                <textarea id="wish"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="landlord">Landlord/Building Name:</label>
+                <input type="text" id="landlord" required>
+            </div>
+            <div class="form-group">
+                <label>Rate your landlord (1-10):</label>
+                <div class="rating">
+                    <input type="radio" id="landlordRate1" name="landlordRating" value="1" required>
+                    <label for="landlordRate1">1</label>
+                    <input type="radio" id="landlordRate2" name="landlordRating" value="2">
+                    <label for="landlordRate2">2</label>
+                    <input type="radio" id="landlordRate3" name="landlordRating" value="3">
+                    <label for="landlordRate3">3</label>
+                    <input type="radio" id="landlordRate4" name="landlordRating" value="4">
+                    <label for="landlordRate4">4</label>
+                    <input type="radio" id="landlordRate5" name="landlordRating" value="5">
+                    <label for="landlordRate5">5</label>
+                    <input type="radio" id="landlordRate6" name="landlordRating" value="6">
+                    <label for="landlordRate6">6</label>
+                    <input type="radio" id="landlordRate7" name="landlordRating" value="7">
+                    <label for="landlordRate7">7</label>
+                    <input type="radio" id="landlordRate8" name="landlordRating" value="8">
+                    <label for="landlordRate8">8</label>
+                    <input type="radio" id="landlordRate9" name="landlordRating" value="9">
+                    <label for="landlordRate9">9</label>
+                    <input type="radio" id="landlordRate10" name="landlordRating" value="10">
+                    <label for="landlordRate10">10</label>
+                </div>
+<div class="form-group">
+                <label for="Explain">Please explain the rating you gave your Landloard in more detail</label>
+                <textarea id="Explain"></textarea>
+
+            </div>
+<div class="form-group">
+                <label for="Anything Else?">Is there anything else you think a future tenant should know before moving in?</label>
+                <textarea id="Anything Else?"></textarea>
             <button type="submit">Submit Review</button>
         </form>
-    </div>
-
-    <div id="reviews" class="container">
-        <h2>Reviews</h2>
-        <div class="filter-container">
-            <label for="filter-date">Filter by Date:</label>
-            <select id="filter-date">
-                <option value="all">All</option>
-                <option value="last-month">Last Month</option>
-                <option value="last-6-months">Last 6 Months</option>
-                <option value="last-year">Last Year</option>
-            </select>
-            <label for="filter-rating">Filter by Rating:</label>
-            <select id="filter-rating">
-                <option value="all">All</option>
-                <option value="5-stars">5 Stars</option>
-                <option value="4-stars">4 Stars</option>
-                <option value="3-stars">3 Stars</option>
-                <option value="2-stars">2 Stars</option>
-                <option value="1-star">1 Star</option>
-            </select>
-            <label for="filter-duration">Filter by Length of Residency:</label>
-            <select id="filter-duration">
-                <option value="all">All</option>
-                <option value="less-than-1-year">Less than 1 year</option>
-                <option value="1-2-years">1-2 years</option>
-                <option value="more-than-2-years">More than 2 years</option>
-            </select>
-        </div>
-        <div id="review-list">
-            <!-- Reviews will be dynamically added here -->
-        </div>
     </div>
 
     <footer>
@@ -349,92 +387,107 @@
     </footer>
 
     <script>
-        document.getElementById('building-review-form').addEventListener('submit', function (e) {
-            e.preventDefault();
+// Array to store reviews
+const reviewsArray = [];
 
-            const review = {
-                country: document.getElementById('country').value,
-                address1: document.getElementById('address1').value,
-                address2: document.getElementById('address2').value,
-                city: document.getElementById('city').value,
-                state: document.getElementById('state').value,
-                zip: document.getElementById('zip').value,
-                duration: document.getElementById('duration').value,
-                review: document.getElementById('review').value,
-                rating: document.querySelector('input[name="rating"]:checked').value,
-                date: new Date().toLocaleDateString()
-            };
+        // Function to validate and sanitize input
+        function sanitizeInput(input) {
+            const forbiddenWords = ["fuck", "shit", "bitch"]; // Add curse words here
+            const sanitizedInput = input.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            return forbiddenWords.some(word => sanitizedInput.includes(word)) ? "" : sanitizedInput;
+        }
 
-            saveReview(review);
-            displayReview(review);
-            this.reset();
+        // Handle form submission
+document.getElementById('building-review-form').addEventListener('submit', function (event) {
+    event.preventDefault();
+    
+    const address1 = sanitizeInput(document.getElementById('address1').value);
+    const address2 = sanitizeInput(document.getElementById('address2').value);
+    const city = sanitizeInput(document.getElementById('city').value);
+    const state = sanitizeInput(document.getElementById('state').value);
+    const zip = sanitizeInput(document.getElementById('zip').value);
+    const duration = sanitizeInput(document.getElementById('duration').value);
+    const rent = sanitizeInput(document.getElementById('rent').value);
+    const rating = sanitizeInput(document.querySelector('input[name="rating"]:checked').value);
+    const love = sanitizeInput(document.getElementById('love').value);
+    const hate = sanitizeInput(document.getElementById('hate').value);
+    const issues = sanitizeInput(document.getElementById('issues').value);
+    const wish = sanitizeInput(document.getElementById('wish').value);
+    const landlord = sanitizeInput(document.getElementById('landlord').value);
+    const landlordRating = sanitizeInput(document.querySelector('input[name="landlordRating"]:checked').value);
+
+    if (!love || !hate || !rating || !landlord) {
+        alert('Please fill out all required fields.');
+        return;
+    }
+
+    // Store review in the array
+    reviewsArray.push({
+        address1, address2, city, state, zip, duration, rent, rating, love, hate, issues, wish, landlord, landlordRating
+    });
+
+    // Display review
+    const reviewSection = document.getElementById('reviews');
+    const reviewElement = document.createElement('div');
+    reviewElement.className = 'review';
+    reviewElement.innerHTML = `
+        <h3>${address1}, ${city}, ${state} ${zip}</h3>
+        <p><strong>Rating:</strong> ${rating}/10</p>
+        <p><strong>Love:</strong> ${love}</p>
+        <p><strong>Hate:</strong> ${hate}</p>
+        <p><strong>Issues:</strong> ${issues}</p>
+        <p><strong>Wish:</strong> ${wish}</p>
+        <p><strong>Landlord/Building Name:</strong> ${landlord}</p>
+        <p><strong>Landlord Rating:</strong> ${landlordRating}/10</p>
+        <p><strong>Rent:</strong> $${rent}</p>
+        <p><strong>Duration:</strong> ${duration}</p>
+    `;
+    reviewSection.appendChild(reviewElement);
+
+    // Clear form
+    document.getElementById('building-review-form').reset();
+});
+
+        });
+// Function to handle search
+document.getElementById('search-button').addEventListener('click', function () {
+    const query = sanitizeInput(document.getElementById('search-bar').value).toLowerCase();
+    if (query) {
+        // Clear previous results
+        const reviewSection = document.getElementById('reviews');
+        reviewSection.innerHTML = '';
+
+        // Filter reviews based on query
+        const results = reviewsArray.filter(review => {
+            const fullAddress = `${review.address1} ${review.address2} ${review.city} ${review.state} ${review.zip}`.toLowerCase();
+            return fullAddress.includes(query);
         });
 
-        function saveReview(review) {
-            let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
-            reviews.push(review);
-            localStorage.setItem('reviews', JSON.stringify(reviews));
-        }
-
-        function displayReview(review) {
-            const reviewList = document.getElementById('review-list');
-            const reviewDiv = document.createElement('div');
-            reviewDiv.classList.add('review');
-            reviewDiv.innerHTML = `
-                <p><strong>Address:</strong> ${review.address1}, ${review.city}, ${review.state}, ${review.zip}</p>
-                <p><strong>Duration:</strong> ${review.duration}</p>
-                <p><strong>Review:</strong> ${review.review}</p>
-                <p><strong>Rating:</strong> ${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}</p>
-                <p><strong>Date:</strong> ${review.date}</p>
-            `;
-            reviewList.appendChild(reviewDiv);
-        }
-
-        function loadReviews() {
-            const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
-            reviews.forEach(displayReview);
-        }
-
-        function filterReviews() {
-            const filterDate = document.getElementById('filter-date').value;
-            const filterRating = document.getElementById('filter-rating').value;
-            const filterDuration = document.getElementById('filter-duration').value;
-
-            const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
-            const filteredReviews = reviews.filter(review => {
-                let dateMatch = true, ratingMatch = true, durationMatch = true;
-
-                if (filterDate !== 'all') {
-                    const today = new Date();
-                    const reviewDate = new Date(review.date);
-                    const timeDiff = today - reviewDate;
-                    const dayDiff = timeDiff / (1000 * 3600 * 24);
-
-                    if (filterDate === 'last-month' && dayDiff > 30) dateMatch = false;
-                    if (filterDate === 'last-6-months' && dayDiff > 180) dateMatch = false;
-                    if (filterDate === 'last-year' && dayDiff > 365) dateMatch = false;
-                }
-
-                if (filterRating !== 'all' && review.rating !== parseInt(filterRating[0])) {
-                    ratingMatch = false;
-                }
-
-                if (filterDuration !== 'all' && review.duration !== filterDuration) {
-                    durationMatch = false;
-                }
-
-                return dateMatch && ratingMatch && durationMatch;
+        // Display search results
+        if (results.length > 0) {
+            results.forEach(review => {
+                const reviewElement = document.createElement('div');
+                reviewElement.className = 'review';
+                reviewElement.innerHTML = `
+                    <h3>${review.address1}, ${review.city}, ${review.state} ${review.zip}</h3>
+                    <p><strong>Rating:</strong> ${review.rating}/10</p>
+                    <p><strong>Love:</strong> ${review.love}</p>
+                    <p><strong>Hate:</strong> ${review.hate}</p>
+                    <p><strong>Issues:</strong> ${review.issues}</p>
+                    <p><strong>Wish:</strong> ${review.wish}</p>
+                    <p><strong>Landlord/Building Name:</strong> ${review.landlord}</p>
+                    <p><strong>Landlord Rating:</strong> ${review.landlordRating}/10</p>
+                    <p><strong>Rent:</strong> $${review.rent}</p>
+                    <p><strong>Duration:</strong> ${review.duration}</p>
+                `;
+                reviewSection.appendChild(reviewElement);
             });
-
-            document.getElementById('review-list').innerHTML = '';
-            filteredReviews.forEach(displayReview);
+        } else {
+            reviewSection.innerHTML = '<p>No results found.</p>';
         }
+    }
+});
 
-        document.getElementById('filter-date').addEventListener('change', filterReviews);
-        document.getElementById('filter-rating').addEventListener('change', filterReviews);
-        document.getElementById('filter-duration').addEventListener('change', filterReviews);
-
-        window.onload = loadReviews;
     </script>
 </body>
 
